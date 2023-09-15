@@ -20,11 +20,7 @@
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>
-                                    <div class="row">
-                                        <div v-for="permission in user.permissions" class="col">
-                                            {{ permission.name }}
-                                        </div>
-                                    </div>
+                                    <button type="button" class="btn btn-primary btn-sm">Ver</button>
                                 </td>
                                 <td>
                                     <button class="btn btn-success btn-block">Salvar</button>
