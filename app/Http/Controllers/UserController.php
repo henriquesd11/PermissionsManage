@@ -17,7 +17,16 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('role:admin', ['only' => ['index', 'getListUsers']]);
+        $this->middleware('role:admin',
+            [
+                'only' => [
+                    'index',
+                    'getListUsers',
+                    'edit',
+                    'update'
+                ]
+            ]
+        );
     }
 
     /**
@@ -27,12 +36,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        return view('frontend.user.home');
+    }
+
+    public function edit(int $userId)
+    {
+        $user = User::with('permissions')->find($userId);
+        return view('frontend.user.edit', compact('user'));
     }
 
     public function getListUsers(): JsonResponse
     {
-        $list = User::with('permissions')->get();
+        $list = User::with('permissions')
+            ->orderBy('created_at','desc')
+            ->get();
 
         return response()->json([
             'list' => $list->toArray(),

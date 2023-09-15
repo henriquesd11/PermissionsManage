@@ -26,21 +26,21 @@
                         <div class="row justify-content-center">
                             <div id="inputLogin">
                                 <div class="mb-4 col-md-10 offset-1">
-                                    <label for="password">Email</label>
-                                    <input type="email" v-model="user.email" placeholder="exemplo@gmail.com" />
+                                    <label for="email">Email</label>
+                                    <input type="email" v-model="user.email" class="form-control" placeholder="exemplo@gmail.com" />
                                     <p v-for="val in errors.email" class="text-danger">
                                         {{ val }}
                                     </p>
                                 </div>
                                 <div class="mb-4 col-md-10 offset-1">
                                     <label for="password">Senha</label>
-                                    <input type="password" v-model="user.password" placeholder="********" />
+                                    <input type="password" v-model="user.password"  class="form-control" placeholder="********" />
                                     <p v-for="val in errors.password" class="text-danger">
                                         {{ val }}
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-block bg-btn-login" v-on:click="doLogin">
+                            <button type="button" class="btn bg-btn-login text-center" v-on:click="doLogin">
                                 <strong>ACESSAR</strong>
                             </button>
                         </div>

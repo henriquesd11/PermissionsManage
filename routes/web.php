@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
         ->group(function() {
             Route::get('/', 'index')->name('home');
             Route::get('list', 'getListUsers')->name('getListUsers');
+            Route::get('{id}/edit', 'edit');
         });
 });
 

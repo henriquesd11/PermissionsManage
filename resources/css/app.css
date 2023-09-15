@@ -1,13 +1,25 @@
+body {
+    background: #1a202c ;
+}
+
+.card {
+    border-radius: 10px;
+    border-color: #24435d;
+}
+
 .bg-autogestor {
     background: #24435d;
     color: white;
+    border-color: #24435d;
 }
 
 .bg-autogestor:hover {
     color: white;
+    border-color: #24435d;
 }
 
 .bg-btn-login, .bg-btn-login:hover {
     background: #43da7e;
     color: #24435d;
+    width: 30%;
 }
