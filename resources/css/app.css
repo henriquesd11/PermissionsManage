@@ -1,0 +1,13 @@
+.bg-autogestor {
+    background: #24435d;
+    color: white;
+}
+
+.bg-autogestor:hover {
+    color: white;
+}
+
+.bg-btn-login, .bg-btn-login:hover {
+    background: #43da7e;
+    color: #24435d;
+}
