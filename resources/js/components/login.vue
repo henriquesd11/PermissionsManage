@@ -70,7 +70,7 @@ export default {
         doLogin(){
             axios.post('login', this.user)
                 .then((data) => {
-                window.location.href = 'users';
+                window.location.href = '/';
             }).catch((e) => {
                 this.errors.password = null;
                 this.errors.email = null;

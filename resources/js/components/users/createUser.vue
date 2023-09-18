@@ -48,8 +48,7 @@ export default {
             axios.post('store', this.user)
                 .then((res) => {
                     this.errors = {}
-                    setTimeout(history.back(), 3000)
-                    console.log(res)
+                    setTimeout(window.location.href = '/users', 3000)
                 }).catch((e) => {
                 console.log(e)
                 this.errors = {}
