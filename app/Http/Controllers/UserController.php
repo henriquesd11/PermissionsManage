@@ -6,7 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -45,9 +45,47 @@ class UserController extends Controller
         return view('frontend.user.edit', compact('user'));
     }
 
+    public function create()
+    {
+        return view('frontend.user.create');
+    }
+
+    public function store(Request $request): JsonResponse
+    {
+        $this->validate($request, [
+           'email' => 'required|email|max:255|unique:users',
+           'name' => 'required|string|max:255',
+           'password' => 'required|min:8',
+        ]);
+
+        $user = User::create(
+            [
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' => Hash::make($request->get('password'))
+            ]
+        );
+
+        $user->assignRole('comum');
+
+        return response()->json(
+            [
+                'message' => 'Usuário com sucesso!',
+                Response::HTTP_CREATED
+            ]
+        );
+    }
+
+    public function delete(int $userId)
+    {
+        $user = User::find($userId);
+        $user->delete();
+    }
+
     public function getListUsers(): JsonResponse
     {
-        $list = User::with('permissions')
+        $list = User::dontShowAdmin()
+            ->with('permissions')
             ->orderBy('created_at','desc')
             ->get();
 
@@ -56,14 +94,36 @@ class UserController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        $user = User::find($id);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        $this->validate($request, [
+           'email' => 'required|email',
+           'name' => 'required|string',
+        ]);
 
-        $user->assignRole($request->input('roles'));
+        User::whereId($id)->update($request->only(['email', 'name']));
 
-        return redirect()->route('users.index')
-            ->with('success','User updated successfully');
+        return response()->json(
+            [
+                'message' => "Usuário atualizado",
+            ],
+            Response::HTTP_ACCEPTED
+        );
+    }
+
+    public function removePermission(int $userId, string $permission): JsonResponse
+    {
+        $user = User::find($userId);
+        $user->revokePermissionTo($permission);
+
+        return response()->json([], Response::HTTP_OK);
+    }
+
+    public function addPermission(int $userId, string $permission)
+    {
+        $user = User::find($userId);
+        $user->givePermissionTo($permission);
+
+        return response()->json([], Response::HTTP_OK);
     }
 }

@@ -22,6 +22,7 @@
         "bootstrap-vue": "^2.23.1",
         "laravel-vite-plugin": "^0.8.0",
         "mdb-vue-ui-kit": "^4.0.0",
+        "toastr": "^2.1.4",
         "vue": "^3.2.25",
         "vue-multiselect": "^2.1.7",
         "vue-password": "^3.1.0",

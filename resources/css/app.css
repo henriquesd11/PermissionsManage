@@ -7,13 +7,8 @@ body {
     border-color: #24435d;
 }
 
-.bg-autogestor {
+.bg-autogestor, .bg-autogestor:hover {
     background: #24435d;
-    color: white;
-    border-color: #24435d;
-}
-
-.bg-autogestor:hover {
     color: white;
     border-color: #24435d;
 }
