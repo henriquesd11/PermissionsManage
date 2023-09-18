@@ -33,7 +33,8 @@ DB_PASSWORD=db-password
 
 *php artisan db:seed*
 
+*php artisan key:generate*
+
 *php artisan serve*
 
 *npm run dev*
-
