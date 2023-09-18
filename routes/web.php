@@ -23,13 +23,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', function() {
+        return view('frontend.home');
+    });
+
     Route::middleware('role:admin')
         ->get('/permissions', [PermissionsController::class, 'index']);
 
     Route::prefix('users')
         ->controller(UserController::class)
         ->group(function () {
-            Route::get('/', 'index')->name('home.users');
+            Route::get('/', 'index')->name('users');
             Route::get('/create', 'create')->name('user.create');
             Route::post('/store', 'store')->name('user.store');
             Route::delete('{id}', 'delete')->name('user.delete');

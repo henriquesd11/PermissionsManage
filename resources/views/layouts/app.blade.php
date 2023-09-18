@@ -19,7 +19,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md shadow-sm bg-autogestor">
         <div class="container">
-            <a class="navbar-brand bg-autogestor" href="{{ url('#') }}">
+            <a class="navbar-brand bg-autogestor" href="{{ url('/') }}">
                 <img src="{{ asset('autoGestorLogo.png') }}" alt="logo AG" height="30">
                 {{ config('app.name', 'Laravel') }}
             </a>
