@@ -14,6 +14,8 @@ banco de dados MySQL.
 
 *composer install*
 
+*npm install* 
+
 ajustar DB no arquivo .env
 
 DB_CONNECTION=mysql
@@ -33,7 +35,8 @@ DB_PASSWORD=db-password
 
 *php artisan db:seed*
 
+*php artisan key:generate*
+
 *php artisan serve*
 
 *npm run dev*
-
