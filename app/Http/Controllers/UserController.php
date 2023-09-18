@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class UserController extends Controller
 {
@@ -71,7 +72,7 @@ class UserController extends Controller
         return response()->json(
             [
                 'message' => 'Usuário com sucesso!',
-                Response::HTTP_CREATED
+                ResponseAlias::HTTP_CREATED
             ]
         );
     }
