@@ -14,6 +14,8 @@ banco de dados MySQL.
 
 *composer install*
 
+*npm install* 
+
 ajustar DB no arquivo .env
 
 DB_CONNECTION=mysql
