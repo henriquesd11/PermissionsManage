@@ -40,3 +40,20 @@ DB_PASSWORD=db-password
 *php artisan serve*
 
 *npm run dev*
+
+# Usuários para teste
+
+email: administrador@autogestor.com
+senha: password
+
+email: comum@autogestor.com
+senha: password
+Contem a somente a permissão de *Produtos
+
+email: comum1@autogestor.com
+senha: password
+Contem a somente a permissão de *Produtos e Categoria
+
+email: comum2@autogestor.com
+senha: password
+Contem a somente a permissão de *Produtos, Categoria e Marcas
