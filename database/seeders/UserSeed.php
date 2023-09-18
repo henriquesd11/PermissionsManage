@@ -33,5 +33,29 @@ class UserSeed extends Seeder
         );
 
         $common->assignRole('comum');
+        $common->givePermissionTo('produtos');
+
+        $common = User::factory()->create(
+            [
+                'name' => 'comum1',
+                'email' => 'comum1@autogestor.com',
+            ]
+        );
+
+        $common->assignRole('comum');
+        $common->givePermissionTo('produtos');
+        $common->givePermissionTo('categoria');
+
+        $common = User::factory()->create(
+            [
+                'name' => 'comum2',
+                'email' => 'comum2@autogestor.com',
+            ]
+        );
+
+        $common->assignRole('comum');
+        $common->givePermissionTo('produtos');
+        $common->givePermissionTo('categoria');
+        $common->givePermissionTo('marcas');
     }
 }
